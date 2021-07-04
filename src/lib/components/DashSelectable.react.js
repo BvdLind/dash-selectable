@@ -1,35 +1,36 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
+const SelectableWrapper = ({parentId, setProps, children}) => {
+    useEffect(() => {
+        const target = document.getElementById(parentId);
+
+        function handleSelected(e) {
+            setProps({selectedValue: document.getSelection().toString()});
+        }
+
+        document.addEventListener('selectionchange', handleSelected);
+
+        return () => {
+            document.removeEventListener('selectionchange', handleSelected);
+        };
+    }, []);
+    return children;
+};
+
 /**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
+ * Contains a wrapper component which attaches an event that listens
+ * for selection so children components that are selected
  */
 export default class DashSelectable extends Component {
     render() {
-        const {id, label, setProps, value} = this.props;
+        const {id, setProps, children} = this.props;
 
         return (
             <div id={id}>
-                ExampleComponent: {label}&nbsp;
-                <input
-                    value={value}
-                    onChange={
-                        /*
-                         * Send the new value to the parent component.
-                         * setProps is a prop that is automatically supplied
-                         * by dash's front-end ("dash-renderer").
-                         * In a Dash app, this will update the component's
-                         * props and send the data back to the Python Dash
-                         * app server if a callback uses the modified prop as
-                         * Input or State.
-                         */
-                        e => setProps({ value: e.target.value })
-                    }
-                />
+                <SelectableWrapper parentId={id} setProps={setProps}>
+                    {children}
+                </SelectableWrapper>
             </div>
         );
     }
@@ -44,18 +45,18 @@ DashSelectable.propTypes = {
     id: PropTypes.string,
 
     /**
-     * A label that will be printed when this component is rendered.
-     */
-    label: PropTypes.string.isRequired,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
-
-    /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
-    setProps: PropTypes.func
+    setProps: PropTypes.func,
+
+    /**
+     * Child components
+     */
+    children: PropTypes.node,
+
+    /**
+     * Selected value
+     */
+    selectedValue: PropTypes.string,
 };

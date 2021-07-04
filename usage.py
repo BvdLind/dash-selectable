@@ -1,24 +1,24 @@
-import dash_selectable
 import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
+from dash_selectable import DashSelectable
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    dash_selectable.DashSelectable(
-        id='input',
-        value='my-value',
-        label='my-label'
-    ),
-    html.Div(id='output')
-])
+app.layout = html.Div(
+    [
+        DashSelectable(
+            id="dash-selectable",
+            children=[html.P("Select this text"), html.P(id="output")],
+        )
+    ]
+)
 
 
-@app.callback(Output('output', 'children'), [Input('input', 'value')])
+@app.callback(Output("output", "children"), [Input("dash-selectable", "selectedValue")])
 def display_output(value):
-    return 'You have entered {}'.format(value)
+    return "You have selected {}".format(value)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)
