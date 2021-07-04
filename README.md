@@ -5,7 +5,7 @@ dash selectable is a wrapper for common HTML elements for connecting select even
 Get started with:
 1. Install Dash and its dependencies: https://dash.plotly.com/installation
 2. pip install dash-selectable
-3. See the usage.py file in this repository for a minimal demo
+3. See [usage.py](https://github.com/BvdLind/dash-selectable/blob/master/usage.py) in this repository for a minimal demo
 
 ## Contributing
 
