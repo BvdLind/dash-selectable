@@ -20,7 +20,7 @@ const SelectableWrapper = ({parentId, setProps, children}) => {
 
 /**
  * Contains a wrapper component which attaches an event that listens
- * for selection so children components that are selected
+ * for selection of elements in the document
  */
 export default class DashSelectable extends Component {
     render() {
