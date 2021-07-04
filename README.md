@@ -1,11 +1,11 @@
 # dash selectable
 
-dash selectable is a Dash component library.
+dash selectable is a wrapper for common HTML elements for connecting select event data to Dash callbacks
 
 Get started with:
-1. Install Dash and its dependencies: https://dash.plotly.com/installation
-2. Run `python usage.py`
-3. Visit http://localhost:8050 in your web browser
+1. Install Dash and its dependencies: https://dash.plotly.com/installation (pip install dash)
+2. pip install dash-selectable
+3. See [usage.py](https://github.com/BvdLind/dash-selectable/blob/master/usage.py) in this repository for a minimal demo
 
 ## Contributing
 
