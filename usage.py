@@ -17,7 +17,11 @@ app.layout = html.Div(
 
 @app.callback(Output("output", "children"), [Input("dash-selectable", "selectedValue")])
 def display_output(value):
-    return "You have selected {}".format(value)
+    text = ""
+    if value:
+        text = value
+
+    return "You have selected: {}".format(text)
 
 
 if __name__ == "__main__":
