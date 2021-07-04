@@ -1,0 +1,7 @@
+include dash_selectable/dash_selectable.min.js
+include dash_selectable/dash_selectable.min.js.map
+include dash_selectable/metadata.json
+include dash_selectable/package-info.json
+include README.md
+include LICENSE
+include package.json
