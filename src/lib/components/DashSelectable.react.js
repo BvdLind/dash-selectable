@@ -1,10 +1,8 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 const SelectableWrapper = ({parentId, setProps, children}) => {
     useEffect(() => {
-        const target = document.getElementById(parentId);
-
         function handleSelected(e) {
             setProps({selectedValue: document.getSelection().toString()});
         }
