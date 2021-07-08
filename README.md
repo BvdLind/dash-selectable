@@ -1,6 +1,6 @@
 # dash selectable
 
-dash selectable is a wrapper for common HTML elements for connecting select event data to Dash callbacks
+Allows Dash apps to interact with a user's text selection inside callbacks.
 
 ![showcase](https://user-images.githubusercontent.com/33874522/124962987-8da5e680-e01f-11eb-92b1-06a5071e8135.gif)
 
